@@ -1,0 +1,52 @@
+{
+  "event_id": "9vpvDrr5yk",
+  "event_type": "form_response",
+  "form_response": {
+    "form_id": "HEv9qr",
+    "token": "aac0808e3c9c20edef5efc880ef86db0",
+    "submitted_at": "2017-03-08T20:42:50Z",
+    "definition": {
+      "id": "HEv9qr",
+      "title": "Multi-Choice With Multi-Selection",
+      "fields": [
+        {
+          "id": "s9XJ",
+          "title": "Required: What type of group is your organization?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "45281545",
+          "title": "Non-Required: What type of group is your organization?",
+          "type": "multiple_choice"
+        }
+      ]
+    },
+    "answers": [
+      {
+        "type": "choices",
+        "choices": {
+          "labels": [
+            "RSO",
+            "Student Government"
+          ],
+          "other": "I chose A and B, but also want other"
+        },
+        "field": {
+          "id": "s9XJ",
+          "type": "multiple_choice"
+        }
+      },
+      {
+        "type": "choices",
+        "choices": {
+          "labels": null,
+          "other": "This one definitely has an other"
+        },
+        "field": {
+          "id": "45281545",
+          "type": "multiple_choice"
+        }
+      }
+    ]
+  }
+}
