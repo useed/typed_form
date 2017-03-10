@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.0.4] - 2017-03-10
+
+Defaults to freezing Questions after initialization, to prevent concerns with mutating data inadvertently when working with questions as value objects.
+
 ## [0.0.3] - 2017-03-10
 
 Bugfixes for Question#type. Adds minimal error propagation in event Typeform's 

@@ -28,7 +28,7 @@ module TypedForm
       question.dup.tap do |new_question|
         new_question.answer = answer
         new_question.text = text
-      end
+      end.freeze
     end
 
     private
