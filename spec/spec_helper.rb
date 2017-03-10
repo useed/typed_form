@@ -11,3 +11,11 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+def data_api_json(filename)
+  File.read("spec/fixtures/data_api/#{filename}.json")
+end
+
+def webhook_json(filename)
+  File.read("spec/fixtures/webhooks/#{filename}.json")
+end
