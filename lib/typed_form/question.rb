@@ -15,7 +15,13 @@ module TypedForm
     end
 
     def type
-      @_type ||= field_id.split("_")[0]
+      @_type ||= determine_type
+    end
+
+    def type_for_grouped(grouped_questions)
+      types = questions.map(&:type)
+      return types.first if types.uniq.size == 1
+      raise ArgumentError, "Grouped questions do not have matching types"
     end
 
     def self.with_response_data(question:, text:, answer:)
@@ -23,6 +29,14 @@ module TypedForm
         new_question.answer = answer
         new_question.text = text
       end
+    end
+
+    private
+
+    def determine_type
+      detected_type = ids.map { |id| id.split("_")[0] }.uniq
+      return detected_type.first if detected_type.size == 1
+      raise StandardError, "Cannot detect type of question ids #{ids}"
     end
   end
 end

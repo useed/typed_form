@@ -45,7 +45,7 @@ In addition to piping/interpolation, Typeform's data is structured in a difficul
 
 Finally, if you've ever tried to duplicate a Typeform Form, you'll notice that their response field IDs completely change, and can no longer be used for locating answers. This gem attempts to solve that as well, by associating questions and answers together based on their results.
 
-Take a look at https://github.com/useed/typed_form/spec/fixtures/ for examples of what you can expect when it comes to their data API; this should help shed some additional light on the purpose behind this gem.
+Take a look at https://github.com/useed/typed_form/tree/master/spec/fixtures for examples of what you can expect when it comes to their data API; this should help shed some additional light on the purpose behind this gem.
 
 
 ## Installation
