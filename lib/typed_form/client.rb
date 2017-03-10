@@ -8,9 +8,14 @@ module TypedForm
       @api_key = api_key
     end
 
-    def form_responses(form_id:, **query_params)
+    def forms_by_id(form_id:, **query_params)
       url_params = query_params.map { |k, v| "#{k}=#{v}" }
-      get [form_id, authenticated_slug(url_params)].join("?")
+      request_url = [form_id, authenticated_slug(url_params)].join("?")
+      get(request_url).body
+    end
+
+    def find_form_by(form_id:, token:, **query_params)
+      forms_by_id(form_id: form_id, token: token, **query_params)
     end
 
     private

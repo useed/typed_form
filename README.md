@@ -79,10 +79,13 @@ form_id = "typeform_form_id"
 token = "form_token" 
 
 client = TypedForm::Client.new(api_key: api_key)
-responses = client.form_responses(form_id: form_id, token: token)
+json = client.find_form_by(form_id: form_id, token: token)
   => # json response for that specific form submission
 
-questions = TypedForm::Questions.new(json: responses)
+parsed = TypedForm::JSONResponseHandler.new(json)
+form = TypedForm::FormResponse.new(parsed_questions: parsed.questions,
+                                   parsed_response: parsed.response.first)
+questions = form.questions
 
 questions.first.text
  => "What is the name of your Program or Academic Unit?"

@@ -1,8 +1,8 @@
 require "spec_helper"
 
 def stub_typeform_requests
-  json = File.read("spec/fixtures/data_api/single_form_response.json")
-  stub_request(:get, /api\.typeform\.com/).to_return(body: json)
+  stub_request(:get, /api\.typeform\.com/)
+    .to_return(body: data_api_json("single_form_response"))
 end
 
 RSpec.describe TypedForm::Client do
@@ -11,13 +11,13 @@ RSpec.describe TypedForm::Client do
       stub_typeform_requests
     end
 
-    describe "#form_responses" do
+    describe "#find_form_by" do
       it "should fetch form data from the API, filtering by the token" do
         api_key = "api_key"
         form_id = "typeform_form_id"
         token = "form_token"
         client = TypedForm::Client.new(api_key: api_key)
-        client.form_responses(form_id: form_id, token: token)
+        client.find_form_by(form_id: form_id, token: token)
 
         api_url = "https://api.typeform.com/v1/form/typeform_form_id"
         expect(WebMock)
