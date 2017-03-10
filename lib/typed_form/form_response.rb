@@ -33,12 +33,6 @@ module TypedForm
       raise ArgumentError, "Grouped questions do not have matching text"
     end
 
-    def type_for_grouped(grouped_questions)
-      types = questions.map(&:type)
-      return types.first if types.uniq.size == 1
-      raise ArgumentError, "Grouped questions do not have matching types"
-    end
-
     def answerable_questions
       parsed_questions
         .reject { |q| q.id.match /(hidden|legal|statement|group)/ }
