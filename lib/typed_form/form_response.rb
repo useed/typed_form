@@ -45,7 +45,7 @@ module TypedForm
           ids: grouped_questions.map(&:id),
           field_id: field_id,
           original_text: question_for_grouped(grouped_questions)
-        )
+        ).freeze
       end
     end
   end
