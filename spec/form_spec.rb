@@ -26,49 +26,19 @@ def expected_single_form_response
 end
 
 RSpec.describe TypedForm::Form do
-
-  describe ".build_form_from" do
+  describe ".new" do
     it "should build form data from the JSON file" do
       json = data_api_json("single_form_response")
-      form = TypedForm::Form.build_form_from(json: json)
+      form = TypedForm::Form.new(json: json)
+      expect(form.json).to eq json
+    end
+  end
+
+  describe "#to_hash" do
+    it "should produce the expected Q&A format" do
+      json = data_api_json("single_form_response")
+      form = TypedForm::Form.new(json: json)
       expect(form.to_hash).to eq expected_single_form_response
     end
   end
-  # context "multiple choice questions" do
-  #   let(:question_data) do
-  #     Arendelle.new(
-  #       id: "list_s9XJ_choice_V0ry",
-  #       question: "Required: What type of group is your organization?",
-  #       field_id: "45281507"
-  #     )
-  #   end
-  #   let(:response) { build_response("multiple_choice") }
-
-  #   describe "#question_ids" do
-  #     it "should have the correct question_ids" do
-  #       expected_ids = %w(list_s9XJ_choice_V0ry list_s9XJ_choice_asCn
-  #                         list_s9XJ_choice_aS3W list_s9XJ_other
-  #                         list_45281545_choice_57415657
-  #                         list_45281545_choice_57415658
-  #                         list_45281545_choice_57415659
-  #                         list_45281545_other)
-  #       expect(response.question_ids).to match_array expected_ids
-  #     end
-  #   end
-
-  #   describe "#questions_and_answers" do
-  #     it "should populate all response with question and answer data" do
-  #       expect(response.questions_and_answers.size).to eq 2
-  #     end
-  #   end
-
-  #   describe "#question_texts" do
-  #     it "should have provide the right text for the question" do
-  #       expect(response.question_texts).to eq [
-  #         "Required: What type of group is your organization?",
-  #         "Non-Required: What type of group is your organization?"
-  #       ]
-  #     end
-  #   end
-  # end
 end
