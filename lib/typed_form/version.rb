@@ -1,3 +1,4 @@
 module TypedForm
-  VERSION = "0.0.4"
+  # Up-to-date version of gem.
+  VERSION = "0.1.0"
 end
