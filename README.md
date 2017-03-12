@@ -78,13 +78,15 @@ form_id = "typeform_form_id"
 # individual response token, provided in responses hash or via webhook data
 token = "form_token" 
 
-client = TypedForm::Client.new(api_key: api_key)
-json = client.find_form_by(form_id: form_id, token: token)
-  => # json response for that specific form submission
+client = TypedForm::API::Client.new(api_key: api_key)
+form = TypedForm::Form.find_form_by(
+  client: client, 
+  form_id: form_id, 
+  token: token
+)
 
-parsed = TypedForm::JSONResponseHandler.new(json)
-form = TypedForm::FormResponse.new(parsed_questions: parsed.questions,
-                                   parsed_response: parsed.response.first)
+# Or, load from existing JSON
+form = TypedForm::Form.build_form_from(json: your_json_source)
 questions = form.questions
 
 questions.first.text

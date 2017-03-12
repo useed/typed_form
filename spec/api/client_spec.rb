@@ -5,7 +5,7 @@ def stub_typeform_requests
     .to_return(body: data_api_json("single_form_response"))
 end
 
-RSpec.describe TypedForm::Client do
+RSpec.describe TypedForm::API::Client do
   describe "forming API requests" do
     before :each do
       stub_typeform_requests
@@ -16,7 +16,7 @@ RSpec.describe TypedForm::Client do
         api_key = "api_key"
         form_id = "typeform_form_id"
         token = "form_token"
-        client = TypedForm::Client.new(api_key: api_key)
+        client = TypedForm::API::Client.new(api_key: api_key)
         client.find_form_by(form_id: form_id, token: token)
 
         api_url = "https://api.typeform.com/v1/form/typeform_form_id"

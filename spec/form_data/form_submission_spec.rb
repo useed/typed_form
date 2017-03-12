@@ -1,12 +1,14 @@
 require "spec_helper"
 
-def build_response(jsonfile = "example_form_response", selector = :first)
-  parsed = TypedForm::JSONResponseHandler.new(data_api_json(jsonfile))
-  TypedForm::FormResponse.new(parsed_questions: parsed.questions,
-                              parsed_response: parsed.responses.send(selector))
+def build_submission(jsonfile = "example_form_responses", selector = :first)
+  parsed = TypedForm::ParsedJson.new(json: data_api_json(jsonfile))
+  TypedForm::FormData::FormSubmission.new(
+    parsed_questions: parsed.questions,
+    parsed_response: parsed.responses.send(selector)
+  )
 end
 
-RSpec.describe TypedForm::FormResponse do
+RSpec.describe TypedForm::FormData::FormSubmission do
   context "multiple choice questions" do
     let(:question_data) do
       Arendelle.new(
@@ -15,7 +17,7 @@ RSpec.describe TypedForm::FormResponse do
         field_id: "45281507"
       )
     end
-    let(:response) { build_response("multiple_choice") }
+    let(:submission) { build_submission("multiple_choice") }
 
     describe "#question_ids" do
       it "should have the correct question_ids" do
@@ -25,19 +27,19 @@ RSpec.describe TypedForm::FormResponse do
                           list_45281545_choice_57415658
                           list_45281545_choice_57415659
                           list_45281545_other)
-        expect(response.question_ids).to match_array expected_ids
+        expect(submission.question_ids).to match_array expected_ids
       end
     end
 
-    describe "#questions_and_answers" do
-      it "should populate all response with question and answer data" do
-        expect(response.questions_and_answers.size).to eq 2
+    describe "#questions" do
+      it "should populate the submission with question and answer data" do
+        expect(submission.questions.size).to eq 2
       end
     end
 
     describe "#question_texts" do
       it "should have provide the right text for the question" do
-        expect(response.question_texts).to eq [
+        expect(submission.question_texts).to eq [
           "Required: What type of group is your organization?",
           "Non-Required: What type of group is your organization?"
         ]
