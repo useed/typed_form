@@ -1,46 +1,54 @@
 module TypedForm
-  # A collection of Modules that build Value Objects around data from the
+  # A collection of Modules that build value objects around data from the
   # Typeform Data API.
   module FormData
     # A collection class which takes a collection of answers to a form, and
     # associates the questions with answers.
     #
-    # @attr_reader [Arendelle] parsed_response An object representing the
-    # submission data from the form.
-    # @attr_reader [Arendelle] parsed_questions
+    # @attr_reader [Array<Question>] input_questions
+    # @attr_reader [Arendelle] parsed_response Parsed Answers from Typeform
+    #   Data API JSON.
+    # @attr_reader [Arendelle] parsed_questions Parsed Questions from Typeform
+    #   Data API JSON
     class Answers
       extend Forwardable
 
       # @!method answers
-      #   @return [Arendelle] parsed_json["answers"] answers data
+      #   @return [Arendelle] Parsed Questions from Typeform Data API JSON
       # @!method metadata
-      #   @return [Arendelle] parsed_json["metadata"] metadata data
+      #   @return [Arendelle] Parsed Metadata from Typeform Data API JSON
       # @!method token
-      #   @return [Arendelle] parsed_json["token"] token for form submission
+      #   @return [String] Token extracted from Typeform Data API JSON
       def_delegators :parsed_response, :answers, :metadata, :token
 
       # @!method token
       #   @return [String] date form was submitted, in UTC
       def_delegators :metadata, :date_submit
 
-
       attr_reader :parsed_response, :input_questions, :parsed_questions
 
       # Builds a collection of Questions, with text extrapolated to support
       # "piped" questions (i.e. "What is the name of your {{answer_42}}").
       #
-      # @return [Array<Question>] Question Value Objects with extrapolated
-      # text and answers.
+      # @return [Array<Question>] Question value objects with extrapolated
+      #   text and answers.
       def self.collate(parsed_response:, parsed_questions:, input_questions:)
         new(parsed_response: parsed_response,
             parsed_questions: parsed_questions,
             input_questions: input_questions).questions
       end
 
-      # Builds Questions via #build_questions or returns the memoized result.
-      # @see #build_questions
+      # Iterates through the existing collection of input questions to build a
+      # set of question value objects. Memoizes result.
+      # @return [Array<Question>]
       def questions
-        @_questions ||= build_questions
+        @_questions ||= input_questions.map do |question|
+          Question.with_response_data(
+            question: question,
+            answer: answers_for(question.ids),
+            text: extrapolated_question_text(question)
+          )
+        end
       end
 
       private
@@ -50,21 +58,6 @@ module TypedForm
         @parsed_response = parsed_response
         @input_questions = input_questions
         @parsed_questions = parsed_questions
-      end
-
-      # Iterates over a collection of parsed input questions to build a new
-      # collection.
-      #
-      # @return [Array<Question>] Question Value Object.
-      # @see Question
-      def build_questions
-        input_questions.map do |question|
-          Question.with_response_data(
-            question: question,
-            answer: answers_for(question.ids),
-            text: extrapolated_question_text(question)
-          )
-        end
       end
 
       def answers_for(ids)

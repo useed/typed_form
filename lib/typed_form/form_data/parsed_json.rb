@@ -2,6 +2,7 @@ module TypedForm
   module FormData
     # A small class which wraps functionality for parsing JSON data from the
     # Typeform Data API.
+    # @attr_reader [String] JSON string
     class ParsedJson
       extend Forwardable
       attr_reader :json

@@ -1,27 +1,23 @@
 module TypedForm
   module FormData
-    # Takes an individual parsed Response for a series of questions, and
-    # provides an interface for accessing the Question Value Objects.
+    # Takes an individual parsed response for a series of questions, and
+    # provides an interface for accessing the Question value objects.
     #
-    # @attr_reader [ParsedJson] parsed_questions A collection of immutable
-    # value objects representing Typeform Questions.
-    # @attr_reader [ParsedJson] parsed_response An individual response for
-    # a Typeform Form.
+    # @attr_reader [Arendelle] parsed_questions Parsed Questions from JSON
+    # @attr_reader [Arendelle] parsed_response Parsed Answers from JSON
     class FormSubmission
       attr_reader :parsed_questions, :parsed_response
 
       # Creates a new Form Submission.
       #
-      # @param [ParsedJson] parsed_questions A collection of immutable
-      # value objects representing Typeform Questions.
-      # @param [ParsedJson] parsed_response An individual response for
-      # a Typeform Form.
+      # @param [Arendelle] parsed_questions Parsed Questions from JSON
+      # @param [Arendelle] parsed_response Parsed Answers from JSON
       def initialize(parsed_questions:, parsed_response:)
         @parsed_questions = parsed_questions
         @parsed_response = parsed_response
       end
 
-      # Builds a full set of Question Value Objects with answer text.
+      # Builds a full set of Question value objects with answer text.
       # @return [Array<Question>]
       def questions
         @_questions ||= Answers.collate(parsed_response: parsed_response,
