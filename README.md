@@ -105,6 +105,8 @@ questions.first.type
 
 The most common use case for this is extrapolating question and answers into a simple object that can provide a clean interface for displaying them. Question type information can be used to allow helpers to format and display different field types (most specifically dates) in a more user-friendly format.
 
+Additional documentation is available at [Rubydoc.](http://www.rubydoc.info/github/useed/typed_form)
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
