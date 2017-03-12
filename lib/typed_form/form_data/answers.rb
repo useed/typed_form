@@ -5,11 +5,10 @@ module TypedForm
     # A collection class which takes a collection of answers to a form, and
     # associates the questions with answers.
     #
-    # @attr_reader [Array<Question>] input_questions
-    # @attr_reader [Arendelle] parsed_response Parsed Answers from Typeform
-    #   Data API JSON.
-    # @attr_reader [Arendelle] parsed_questions Parsed Questions from Typeform
-    #   Data API JSON
+    # @attr_reader [Arendelle] parsed_response An immutable object representing
+    #   the submission data from the form.
+    # @attr_reader [Arendelle] parsed_questions An immutable object representing
+    #   the question data from the form.
     class Answers
       extend Forwardable
 

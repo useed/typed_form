@@ -24,8 +24,8 @@ module TypedForm
       #   is ids instead of id because of the way Typeform represents multiple
       #   choice questions.
       # @param [Integer] field_id The Typeform Field ID for the question
-      # @param [String] The original text for the question before answers
-      #   are extrapolated back into the question.
+      # @param [String] original_text The original text for the question before
+      #   answers are extrapolated back into the question.
       def initialize(ids:, field_id:, original_text:)
         @ids = ids
         @field_id = field_id
