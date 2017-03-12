@@ -20,7 +20,7 @@ module TypedForm
 
     # Creates a new webhook object from an incoming Typeform Data stream.
     # @param [String] json JSON Data from a Typeform Webhook
-    def initialize(json: json)
+    def initialize(json:)
       @json = json.freeze
     end
 

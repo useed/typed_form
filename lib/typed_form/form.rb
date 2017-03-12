@@ -16,7 +16,7 @@ module TypedForm
     def_delegators :submission, :questions
 
     # Creates a new instance of a Form, to allow querying
-    def initialize(json: json)
+    def initialize(json:)
       @json = json
     end
 

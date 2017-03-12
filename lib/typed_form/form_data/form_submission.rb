@@ -35,7 +35,7 @@ module TypedForm
 
       def answerable_questions
         parsed_questions
-          .reject { |q| q.id.match /(hidden|legal|statement|group)/ }
+          .reject { |q| q.id.match(/(hidden|legal|statement|group)/) }
           .group_by(&:field_id)
       end
 
