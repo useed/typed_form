@@ -2,8 +2,7 @@ module TypedForm
   # A representation of the Typeform Form Data for a single
   # form response.
   #
-  # @author Rob Cole
-  # @attr_reader [String] json JSON string using Typeform's Data API schema
+  # @attr_reader [String] json JSON data using Typeform's Data API schema
   class Form
     extend Forwardable
     attr_accessor :json
@@ -13,7 +12,7 @@ module TypedForm
     def_delegators :parsed_json, :responses
 
     # @!method questions
-    # @ see FormSubmission#questions
+    # @see FormSubmission#questions
     def_delegators :submission, :questions
 
     # Creates a new instance of a Form, to allow querying
