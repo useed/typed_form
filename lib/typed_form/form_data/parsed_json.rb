@@ -8,9 +8,11 @@ module TypedForm
       attr_reader :json
 
       # @!method questions
-      #   @return [Arendelle] parsed_json["questions"] questions data
+      #   @return [Arendelle] An immutable representation of the Typeform Data
+      #     API JSON questions field.
       # @!method responses
-      #   @return [Arendelle] parsed_json["responses"] response data
+      #   @return [Arendelle] An immutable representation of the Typeform Data
+      #     API JSON responses field.
       def_delegators :parsed_json, :questions, :responses
 
       # Creates and freezes JSON data.

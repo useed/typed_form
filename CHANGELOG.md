@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.1.1] - 2017-03-12
+
+Adds support for TypedForm::VirtualModel. Adds a decorator-like model which allows user-defined VirtualModels which respond with Typeform Data values.
+
 ## [0.1.0] - 2017-03-12
 
 Adds logic for extracting data needed for Data API from incoming Webhooks. 

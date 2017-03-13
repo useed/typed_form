@@ -105,7 +105,18 @@ questions.first.type
 
 The most common use case for this is extrapolating question and answers into a simple object that can provide a clean interface for displaying them. Question type information can be used to allow helpers to format and display different field types (most specifically dates) in a more user-friendly format.
 
-Additional documentation is available at [Rubydoc.](http://www.rubydoc.info/github/useed/typed_form)
+Additional documentation is available at [Rubydoc.](http://www.rubydoc.info/github/useed/typed_form/master)
+
+## Wishlist
+
+This gem is in the very early stages of development. Typeform does not provide a full example of the full JSON schema, so specific question and answer formats are not guaranteed to work. Issues and PRs are welcome, especially for functionality which focuses on working with data from the Typeform Data API.
+
+The API wrapper is minimalist by purpose, and currently is only designed to fetch a single form response for a specific form from the Data API. Additional functionality may be desired in the future.
+
+- [ ] Error Handling for JSON Responses
+- [ ] Error Handling for API Requests
+- [ ] Error Logging Configuration
+- [ ] Automatic retry & failover for Typeform API response failures
 
 ## Development
 
@@ -121,3 +132,8 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/useed/
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+
+## Code of Conduct
+
+Everyone interacting in this repository is expected to follow [our code of conduct](https://github.com/useed/typed_form/blob/master/CODE_OF_CONDUCT.md)
