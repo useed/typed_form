@@ -1,6 +1,5 @@
 module TypedForm
-  # A representation of the Typeform Form Data for a single
-  # form response.
+  # A representation of the Typeform Form Data for a single form response.
   #
   # @attr_reader [String] json JSON data using Typeform's Data API schema
   class Form
@@ -37,13 +36,17 @@ module TypedForm
       questions.each_with_object({}) { |q, hash| hash[q.text] = q.answer }
     end
 
+    def response
+      raise StandardError, "Form expects a single response" if multi_response?
+      responses.first
+    end
+
     private
 
     def submission
-      raise StandardError, "Form expects a single response" if multi_response?
       @_submission ||= FormData::FormSubmission.new(
         parsed_questions: parsed_json.questions,
-        parsed_response: responses.first
+        parsed_response: response
       )
     end
 
@@ -53,10 +56,6 @@ module TypedForm
 
     def parsed_json
       @_parsed_json ||= FormData::ParsedJson.new(json: json)
-    end
-
-    def response
-      responses.first
     end
   end
 end
