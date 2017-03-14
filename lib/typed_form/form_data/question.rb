@@ -32,11 +32,13 @@ module TypedForm
         @original_text = original_text
       end
 
-      # Performs a regular expression based on the id of the question, to
+      # Splits into an array based on the id of the question, to
       # determine the Type of object. This information can be queried in order
       # to allow users to handle various types of Typeform data differently.
       def type
-        @_type ||= determine_type
+        detected_type = ids.map { |id| id.split("_")[0] }.uniq
+        return detected_type.first if detected_type.size == 1
+        raise StandardError, "Cannot detect type of question ids #{ids}"
       end
 
       # Creates a new Question with existing data from a previous question.
@@ -48,14 +50,6 @@ module TypedForm
           new_question.answer = answer
           new_question.text = text
         end.freeze
-      end
-
-      private
-
-      def determine_type
-        detected_type = ids.map { |id| id.split("_")[0] }.uniq
-        return detected_type.first if detected_type.size == 1
-        raise StandardError, "Cannot detect type of question ids #{ids}"
       end
     end
   end
