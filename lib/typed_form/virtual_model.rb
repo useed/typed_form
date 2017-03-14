@@ -59,11 +59,23 @@ module TypedForm
       question.answer
     end
 
-    def typecast_response_field(message, e)
-      response = message.send(e)
-      case e
+    def typecast_response_field(message, response_field)
+      response = build_response(message, response_field)
+      case response_field
       when /date/ then DateTime.parse(response)
       else response
+      end
+    end
+
+    def build_response(message, response_field)
+      valid_fields = message.singleton_methods.map(&:to_s)
+
+      if valid_fields.include?(response_field)
+        message.send(response_field)
+      else
+        msg = "#{response_field} is not a valid field name for the TypeForm "\
+              "response. Valid fields are: #{valid_fields.join(', ')}"
+        raise ArgumentError, msg
       end
     end
 
@@ -76,18 +88,15 @@ module TypedForm
       question_attrs.each do |k, v|
         next unless able_to_define?(k)
 
-        answer = find_answer_to(v)
-        next if answer.nil?
-
         define_singleton_method k do
-          answer
+          find_answer_to(v)
         end
       end
     end
 
     def response_attribute_value(messages)
-      messages.split(".").inject(form.response) do |message, e|
-        typecast_response_field(message, e)
+      messages.split(".").inject(form.response) do |message, response_field|
+        typecast_response_field(message, response_field)
       end
     end
 

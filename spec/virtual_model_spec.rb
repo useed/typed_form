@@ -105,5 +105,14 @@ RSpec.describe TypedForm::VirtualModel do
         expect{model.submitted_at}.to raise_error(NoMethodError)
       end
     end
+
+    context "attribute is incorrectly referenced" do
+      it "should raise a ArgumentError" do
+        submitted_attr = { "submitted_at" => "metadata.date_submitted" }
+        model = build_model(form: form, response_attrs: submitted_attr)
+        expect{model.submitted_at}
+          .to raise_error(ArgumentError, /date_submitted is not a valid/)
+      end
+    end
   end
 end
