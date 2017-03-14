@@ -1,10 +1,7 @@
 module TypedForm
   # A representation of the Typeform Form Data for a single form response.
-  #
-  # @attr_reader [String] json JSON data using Typeform's Data API schema
   class Form
     extend Forwardable
-    attr_accessor :json
 
     # @!method responses
     # @see FormData::ParsedJson#responses
@@ -15,8 +12,16 @@ module TypedForm
     def_delegators :submission, :questions
 
     # Creates a new instance of a Form, to allow querying
+    #
+    # @params [String] json Typeform Data API JSON input for form.
     def initialize(json:)
-      @json = json
+      @raw_json = json
+    end
+
+    # Removes non-breaking spaces (character point 160) from TypeForm data
+    # before beginning processing.
+    def json
+      @_json ||= @raw_json.gsub("\\u00a0", " ")
     end
 
     # Uses the Typeform API client to query/find the form based on the form_id

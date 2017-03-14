@@ -8,7 +8,7 @@
   "questions": [
     {
       "id": "statement_jc1Z",
-      "question": "Thank you for your interest in applying to fundraise with USEED! To get the process rolling, we would like to collect some information about you and your crowdfunding idea. This process will take about 10-15 minutes to complete.<br /><br />Upon submission, our team will review and assess your application. Please take your time as your application will help us evaluate your suitability for the program.<br /><br />If your application meets our program criteria, a USEED Coach will follow up to schedule a virtual interview session with you and anyone else you feel should attend. <br /><br />If at any point you have questions, please do not hesitate to reach out to support@useed.org.",
+      "question": "Thank you for your interest in applying to fundraise with USEED! To get the process rolling, we would like to collect some information about you and your crowdfunding idea. This process will take about 10-15 minutes to complete.<br \/><br \/>Upon submission, our team will review and assess your application. Please take your time as your application will help us evaluate your suitability for the program.<br \/><br \/>If your application meets our program criteria, a USEED Coach will follow up to schedule a virtual interview session with you and anyone else you feel should attend.\u00a0<br \/><br \/>If at any point you have questions, please do not hesitate to reach out to support@useed.org.",
       "field_id": 44763779
     },
     {
@@ -28,7 +28,7 @@
     },
     {
       "id": "terms_45309915",
-      "question": "To apply to use our crowdfunding training program, you must be affiliated with Colevester University. Please read and accept the terms below to proceed.",
+      "question": "To apply to use our crowdfunding training program, you must be affiliated with\u00a0Colevester University. Please read and accept the terms below to proceed.",
       "field_id": 45309915,
       "group": "group_45396218"
     },
@@ -128,43 +128,43 @@
     },
     {
       "id": "textfield_goYz",
-      "question": "What is the name of your {{answer_44763792}}?",
+      "question": "What is the name of your\u00a0{{answer_44763792}}?",
       "field_id": 44763783,
       "group": "group_45395775"
     },
     {
       "id": "list_fprR_choice",
-      "question": "Does {{answer_44763783}} have an advisor (coach, department head, etc)?",
+      "question": "Does\u00a0{{answer_44763783}} have an advisor (coach, department head, etc)?",
       "field_id": 44763793,
       "group": "group_45395775"
     },
     {
       "id": "email_mgOs",
-      "question": "What is the email address for the advisor of {{answer_44763783}}?",
+      "question": "What is the email address for the advisor of\u00a0{{answer_44763783}}?",
       "field_id": 44763786,
       "group": "group_45395775"
     },
     {
       "id": "textfield_pHb4",
-      "question": "What is the name of the advisor of {{answer_44763783}}?",
+      "question": "What is the name of the advisor of\u00a0{{answer_44763783}}?",
       "field_id": 44763784,
       "group": "group_45395775"
     },
     {
       "id": "number_mpk2",
-      "question": "How many active members are there in {{answer_44763783}} who will help you fundraise?",
+      "question": "How many active members are there in\u00a0{{answer_44763783}} who will help you fundraise?",
       "field_id": 44763790,
       "group": "group_45395775"
     },
     {
       "id": "textarea_j1a3",
-      "question": "Please provide the names and email addresses of those who will be involved in leading this crowdfunding campaign (5-8 people).",
+      "question": "Please provide the\u00a0names\u00a0and\u00a0email addresses\u00a0of those who will be involved in leading this crowdfunding campaign\u00a0(5-8 people).",
       "field_id": 44763795,
       "group": "group_45395775"
     },
     {
       "id": "group_45395846",
-      "question": "Almost done. In the next section, we'd like to learn more about what you're looking to fundraise for, and what the money you raise will be spent on.You'll eventually use this information to help build out your crowdfunding page, which will help communicat",
+      "question": "Almost done. In the next section, we'd like to learn more about what you're looking to fundraise for, and what the money you raise will be spent on.",
       "field_id": 45395846
     },
     {
@@ -183,35 +183,41 @@
   "responses": [
     {
       "completed": "1",
-      "token": "e91856e3d084c607c67b2160df9db139",
+      "token": "d1bbc77432d7a605c51a15d47f568dae",
       "metadata": {
         "browser": "default",
         "platform": "other",
-        "date_land": "2017-03-09 21:12:06",
-        "date_submit": "2017-03-09 21:14:26",
-        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
-        "referer": "https://typeform-subdomain.typeform.com/to/DPJEp0",
-        "network_id": "netid42example"
+        "date_land": "2017-03-13 23:37:18",
+        "date_submit": "2017-03-13 23:42:17",
+        "user_agent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/56.0.2924.87 Safari\/537.36",
+        "referer": "https:\/\/devteam4.typeform.com\/to\/DPJEp0",
+        "network_id": "94c4386d47"
       },
-      "hidden": [],
+      "hidden": [
+
+      ],
       "answers": {
-        "textfield_ZAUv": "Rob",
-        "email_S4nP": "robcole@useed.org",
+        "textfield_ZAUv": "Rob Cole",
+        "email_S4nP": "robcole@example.com",
         "terms_45309915": "1",
-        "list_45040227_choice": "Colevester Academic or Department agency account",
-        "yesno_45039966": "0",
+        "list_45040227_choice": "Colevester Student Government club account",
+        "yesno_45039966": "1",
         "list_45402659_choice_57572905": "Engineering",
         "list_45402659_choice_57572907": "Student Organization",
         "yesno_v68T": "1",
-        "date_pTA3": "1492214400000",
+        "date_pTA3": "1491091200000",
         "number_PYll": "4200",
-        "list_p0Qz_choice": "Student Organization",
-        "textfield_goYz": "Chip Uno's Engineering Team",
-        "list_fprR_choice": "Yes -- that's me!",
+        "list_vZbP_choice": "Yes, I'm a returning USEED fundraiser.",
+        "website_PLEL": "https:\/\/useed.net\/give\/previous_campaign",
+        "list_p0Qz_choice": "Program or Academic Unit",
+        "textfield_goYz": "Engineering for the Common Good",
+        "list_fprR_choice": "Yes",
+        "email_mgOs": "advisor_example@example.com",
+        "textfield_pHb4": "Example Advisor Name",
         "number_mpk2": "42",
-        "textarea_j1a3": "Echo Dog, echo.dog@example.com",
-        "textarea_XF8w": "This is the section where we write a detailed, yet concise, answer about what we're raising funds for.",
-        "textarea_ttYW": "And here we provide an accurate budget breakdown!"
+        "textarea_j1a3": "First Leader, first.leader@example.com\nSecond Leader, second.leader@example.com\nThird Leader, third.leader@example.com",
+        "textarea_XF8w": "This would normally be multiple paragraphs.\n\nI guess it is this time, too. This is an explanation of what we're raising money for, with a full accounting for what purpose the money will fill for us.",
+        "textarea_ttYW": "This budget breakdown will be more detailed, and will include exactly where each portion of our funds is going."
       }
     }
   ]

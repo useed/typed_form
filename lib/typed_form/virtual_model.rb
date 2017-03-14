@@ -59,6 +59,14 @@ module TypedForm
       question.answer
     end
 
+    def typecast_response_field(message, e)
+      response = message.send(e)
+      case e
+      when /date/ then DateTime.parse(response)
+      else response
+      end
+    end
+
     def able_to_define?(attr)
       !self.class.method_defined?(attr) &&
         attr.to_s.match(/^[a-z_][a-zA-Z_0-9!?]*$/)
@@ -79,7 +87,7 @@ module TypedForm
 
     def response_attribute_value(messages)
       messages.split(".").inject(form.response) do |message, e|
-        message.send(e)
+        typecast_response_field(message, e)
       end
     end
 

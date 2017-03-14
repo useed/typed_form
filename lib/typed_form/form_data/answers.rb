@@ -42,9 +42,11 @@ module TypedForm
       # @return [Array<Question>]
       def questions
         @_questions ||= input_questions.map do |question|
+          text_answers = answers_for(question.ids)
+
           Question.with_response_data(
             question: question,
-            answer: answers_for(question.ids),
+            answer: typecast_answer(answer: text_answers, type: question.type),
             text: extrapolated_question_text(question)
           )
         end
@@ -85,6 +87,31 @@ module TypedForm
 
       def find_answer_by_id(id)
         answers.instance_variable_get("@#{id}")
+      end
+
+      def form_duplicated_on_typeform?
+        questions.detect { |q| q.text =~ /_[a-zA-Z]_/}
+      end
+
+      # Thanks for the date normalization, Typeform. Depending on whether your
+      # field is duplicated from another form (by copying a form), the format
+      # will be a stringified date, or a string like "1491091200000" - which
+      # represents seconds from the epoch, but with 3 zero's added for no
+      # explicable reason.
+      def normalized_date(date_string)
+        if date_string =~ /\d{4}-\d{2}-\d{2}/
+          Date.parse(date_string)
+        else
+          Time.at(date_string[0..9].to_i).utc.to_date
+        end
+      end
+
+      def typecast_answer(answer:, type:)
+        case type
+        when "date" then normalized_date(answer)
+        when "number" then answer.to_i
+        else answer
+        end
       end
     end
   end

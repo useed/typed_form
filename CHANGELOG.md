@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.1.2] - 2017-03-13
+
+Strips non-breaking whitespace ("\\u00a0") character from typeform data to normalize question/answer searching. Adds support for typecasting date, datetime, and integer objects from Typeform Responses & metadata.
+
 ## [0.1.1] - 2017-03-12
 
 Adds support for TypedForm::VirtualModel. Adds a decorator-like model which allows user-defined VirtualModels which respond with Typeform Data values.
