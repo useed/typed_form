@@ -36,9 +36,9 @@ def expected_question_attributes
   long_answer_2 = "This budget breakdown will be more detailed, and will "\
                   "include exactly where each portion of our funds is going."
 
-  ["Rob Cole", "robcole@example.com", "1",
-   "Colevester Student Government club account", "1",
-   "Engineering, Student Organization", "1",
+  ["Rob Cole", "robcole@example.com", true,
+   "Colevester Student Government club account", true,
+   "Engineering, Student Organization", true,
    Time.at(1491091200).utc.to_date,
    4200, "Yes, I'm a returning USEED fundraiser.",
    "https://useed.net/give/previous_campaign", "Program or Academic Unit",

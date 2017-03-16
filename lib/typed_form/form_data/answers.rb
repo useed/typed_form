@@ -47,7 +47,8 @@ module TypedForm
           Question.with_response_data(
             question: question,
             answer: typecast_answer(answer: text_answers, type: question.type),
-            text: extrapolated_question_text(question)
+            text: extrapolated_question_text(question),
+            original_answer: text_answers
           )
         end
       end
@@ -106,10 +107,16 @@ module TypedForm
         end
       end
 
+      def cast_boolean_string(string)
+        string == "1" ? true : false
+      end
+
       def typecast_answer(answer:, type:)
         case type
         when "date" then normalized_date(answer)
         when "number" then answer.to_i
+        when "yesno" then cast_boolean_string(answer)
+        when "terms" then cast_boolean_string(answer)
         else answer
         end
       end

@@ -13,7 +13,7 @@ module TypedForm
     # @attr [Text] answer The extrapolated text for the question
     class Question
       attr_reader :ids, :field_id, :original_text
-      attr_accessor :answer, :text
+      attr_accessor :answer, :text, :original_answer
 
       # Creates a new Question value object, which represents any number of
       # questions in a Typeform Form that can be logically represented as a
@@ -45,9 +45,10 @@ module TypedForm
       #
       # @return [Question] Question with extrapolated text in questions and
       #   with the answer to the question as an attribute.
-      def self.with_response_data(question:, text:, answer:)
+      def self.with_response_data(question:, text:, answer:, original_answer:)
         question.dup.tap do |new_question|
           new_question.answer = answer
+          new_question.original_answer = original_answer
           new_question.text = text
         end.freeze
       end
