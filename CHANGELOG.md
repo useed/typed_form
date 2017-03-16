@@ -1,5 +1,9 @@
 # Change Log
 
+### [0.1.3] - 2017-03-16
+
+Adds support for typecasting Yes/No and Terms of Service fields in TypedForm::VirtualModel. Adds "original_answer" field to Questions to preserve original values, either for debugging purposes or for situations where typecasting is not desirable.  
+
 ## [0.1.2] - 2017-03-13
 
 Strips non-breaking whitespace ("\\u00a0") character from typeform data to normalize question/answer searching. Adds support for typecasting date, datetime, and integer objects from Typeform Responses & metadata.
