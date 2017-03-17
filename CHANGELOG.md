@@ -1,5 +1,9 @@
 # Change Log
 
+### [0.1.4] - 2017-03-16
+
+Strips additional whitespace and isolates whitespace stripping behavior to a Util class, to allow for easier test coverage. Adds raw_json accessors to models where we normalize JSON input to allow for end-users to determine whether they want clean/normalized JSON or the original results from Typeform. This prevents mismatches in the regular expression => attribute matching in VirtualModel, which were running into issues when `" " != " "`, preventing the regular expressions from matching.
+
 ### [0.1.3] - 2017-03-16
 
 Adds support for typecasting Yes/No and Terms of Service fields in TypedForm::VirtualModel. Adds "original_answer" field to Questions to preserve original values, either for debugging purposes or for situations where typecasting is not desirable.  
