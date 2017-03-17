@@ -15,7 +15,7 @@ def question_attrs
     "prev_campaign_link" => "Can you provide a link to one of your previous",
     "org_type" => "I am applying on behalf of",
     "org_name" => "What is the name of your .+",
-    "has_advisor" => "Does .+ have an advisor",
+    "has_advisor" => "Does .+ have an advisor",
     "advisor_email" => "What is the email address for the advisor",
     "advisor_name" => "What is the name of the advisor",
     "active_members" => "How many active members",

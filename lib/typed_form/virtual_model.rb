@@ -54,7 +54,9 @@ module TypedForm
     private
 
     def find_answer_to(text)
-      question = form.questions.detect { |q| q.text.match Regexp.new(text) }
+      question = form.questions.detect do |q|
+        q.text.match Regexp.new Util.normalize_spaces(text)
+      end
       return unless question
       question.answer
     end

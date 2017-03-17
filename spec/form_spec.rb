@@ -26,17 +26,24 @@ def expected_single_form_response
 end
 
 RSpec.describe TypedForm::Form do
+  let(:json) { data_api_json("single_form_response") }
+
   describe "#json" do
-    it "should build form data from the JSON file" do
-      json = data_api_json("single_form_response")
+    it "should respond with JSON with normalized spaces" do
       form = TypedForm::Form.new(json: json)
-      expect(form.json).to eq json.gsub("\\u00a0", " ")
+      expect(form.json).to eq TypedForm::Util.normalize_spaces(json)
+    end
+  end
+
+  describe "#raw_json" do
+    it "should respond with the raw json from the input" do
+      form = TypedForm::Form.new(json: json)
+      expect(form.raw_json).to eq json
     end
   end
 
   describe "#to_hash" do
     it "should produce the expected Q&A format" do
-      json = data_api_json("single_form_response")
       form = TypedForm::Form.new(json: json)
       expect(form.to_hash).to eq expected_single_form_response
     end

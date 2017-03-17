@@ -5,12 +5,18 @@ RSpec.describe TypedForm::Webhook do
   let(:webhook) { TypedForm::Webhook.new(json: json) }
 
   describe "#json" do
-    it "should return the original json" do
-      expect(webhook.json).to eq json
+    it "should return normalized json" do
+      expect(webhook.json).to eq TypedForm::Util.normalize_spaces(json)
     end
 
     it "should be frozen" do
       expect(webhook.json.frozen?).to be_truthy
+    end
+  end
+
+  describe "#raw_json" do
+    it "should return the raw json" do
+      expect(webhook.raw_json).to eq json
     end
   end
 

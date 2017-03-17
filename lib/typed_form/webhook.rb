@@ -4,7 +4,8 @@ module TypedForm
   #
   # @see https://www.typeform.com/help/webhooks/ Typeform Webhook Docs
   #
-  # @attr_reader [String] json JSON data from an incoming Typeform Webhook
+  # @attr_reader [String] raw_json Unformatted JSON data from an incoming
+  #   Typeform Webhook.
   class Webhook
     extend Forwardable
 
@@ -16,12 +17,17 @@ module TypedForm
     # @!method form_id
     #   @return [String] The form ID from the webhook submission.
     def_delegators :form_response, :form_id
-    attr_reader :json
+
+    attr_reader :raw_json
 
     # Creates a new webhook object from an incoming Typeform Data stream.
     # @param [String] json JSON Data from a Typeform Webhook
     def initialize(json:)
-      @json = json.freeze
+      @raw_json = json
+    end
+
+    def json
+      @_json ||= Util.normalize_spaces(@raw_json).freeze
     end
 
     # Retrieves the Token from the Webhook JSON data.
