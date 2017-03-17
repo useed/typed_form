@@ -1,5 +1,8 @@
 module TypedForm
   # A representation of the Typeform Form Data for a single form response.
+  #
+  # @attr_reader [String] raw_json Unformatted JSON data from an incoming
+  #   Typeform Webhook.
   class Form
     extend Forwardable
 
@@ -11,6 +14,8 @@ module TypedForm
     # @see FormSubmission#questions
     def_delegators :submission, :questions
 
+    attr_reader :raw_json
+
     # Creates a new instance of a Form, to allow querying
     #
     # @params [String] json Typeform Data API JSON input for form.
@@ -18,10 +23,8 @@ module TypedForm
       @raw_json = json
     end
 
-    # Removes non-breaking spaces (character point 160) from TypeForm data
-    # before beginning processing.
     def json
-      @_json ||= @raw_json.gsub("\\u00a0", " ")
+      @_json ||= Util.normalize_spaces(@raw_json)
     end
 
     # Uses the Typeform API client to query/find the form based on the form_id
