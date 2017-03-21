@@ -87,7 +87,7 @@ module TypedForm
       end
 
       def find_answer_by_id(id)
-        answers.instance_variable_get("@#{id}")
+        answers.instance_variable_get("@_#{id}")
       end
 
       def form_duplicated_on_typeform?

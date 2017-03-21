@@ -1,5 +1,14 @@
 # Change Log
 
+### [0.1.5] - 2017-03-20
+
+Update Arendelle.
+
+Arendelle 0.1.1 introduced a change in their naming of instance
+variables in order to support ivars that start with numbers. This
+updates the ivar behavior (which relies on a private implementation
+detail to handle Typeform's bizarre multiple choice question format).
+
 ### [0.1.4] - 2017-03-16
 
 Strips additional whitespace and isolates whitespace stripping behavior to a Util class, to allow for easier test coverage. Adds raw_json accessors to models where we normalize JSON input to allow for end-users to determine whether they want clean/normalized JSON or the original results from Typeform. This prevents mismatches in the regular expression => attribute matching in VirtualModel, which were running into issues when `" " != " "`, preventing the regular expressions from matching.
