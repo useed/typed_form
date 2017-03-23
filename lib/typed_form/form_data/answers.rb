@@ -112,6 +112,7 @@ module TypedForm
       end
 
       def typecast_answer(answer:, type:)
+        return nil if answer.nil?
         case type
         when "date" then normalized_date(answer)
         when "number" then answer.to_i

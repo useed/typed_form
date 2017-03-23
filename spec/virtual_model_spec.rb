@@ -8,8 +8,8 @@ def question_attrs
     "funding_account_type" => "type of Colevester funding account",
     "research_related" => "Are these funds for a research",
     "project_type" => "What type of project",
-    "has_deadline" => "Do you have a deadline for funds to be available?",
-    "need_funds_by" => "When do you need the funds available by?",
+    "has_deadline" => "Do you have a deadline for funds to be available",
+    "need_funds_by" => "When do you need the funds available by",
     "goal_amount" => "How much money",
     "participated_in_crowdfunding" => "participated in a crowdfunding",
     "prev_campaign_link" => "Can you provide a link to one of your previous",
@@ -66,6 +66,16 @@ end
 RSpec.describe TypedForm::VirtualModel do
   let(:json) { data_api_json("single_form_response") }
   let(:form) { TypedForm::Form.new(json: json) }
+
+  context "when a date field is not submitted" do
+    it "should respond with nil" do
+      date_json = data_api_json("single_form_optional_date")
+      date_form = TypedForm::Form.new(json: date_json)
+      dateq = { "need_funds_by" => "When do you need the funds available by?" }
+      model = build_model(form: date_form, question_attrs: dateq)
+      expect(model.need_funds_by).to be_nil
+    end
+  end
 
   describe "attributes built from questions" do
     question_attrs.each_with_index do |(attr, _), i|

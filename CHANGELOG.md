@@ -1,5 +1,9 @@
 # Change Log
 
+### [0.1.6] - 2017-03-22
+
+Fixes NoMethodError: undefined method `[]' for nil:NilClass error when normalizing optional date fields that are left blank (which translates to nil in Typeform Data).
+
 ### [0.1.5] - 2017-03-20
 
 Update Arendelle.
