@@ -18,7 +18,7 @@ module TypedForm
 
     # Creates a new instance of a Form, to allow querying
     #
-    # @params [String] json Typeform Data API JSON input for form.
+    # @param [String] json Typeform Data API JSON input for form.
     def initialize(json:)
       @raw_json = json
     end

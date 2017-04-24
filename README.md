@@ -86,7 +86,7 @@ form = TypedForm::Form.find_form_by(
 )
 
 # Or, load from existing JSON
-form = TypedForm::Form.build_form_from(json: your_json_source)
+form = TypedForm::Form.new(json: your_json_source)
 questions = form.questions
 
 questions.first.text
