@@ -134,7 +134,7 @@
     },
     {
       "id": "list_fprR_choice",
-      "question": "Does\u00a0{{answer_44763783}} have an advisor (coach, department head, etc)?",
+      "question": "Does\xC2\xA0{{answer_44763783}} have an advisor (coach, department head, etc)?",
       "field_id": 44763793,
       "group": "group_45395775"
     },
