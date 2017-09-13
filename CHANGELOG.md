@@ -1,5 +1,9 @@
 # Change Log
 
+### [0.1.8] - 2017-09-13
+
+Allows virtual model to import data properly from 'other' questions with interpolation.
+
 ### [0.1.7] - 2017-08-10
 
 Fixes issues interpreting `\xC2\xA0` by replacing it with a standard space (alternate representation of `\u00a0` initially removed in 0.1.2).
