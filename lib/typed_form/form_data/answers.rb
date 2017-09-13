@@ -82,7 +82,7 @@ module TypedForm
         end
 
         answers_found = fields.map { |f| find_answer_by_id(f.id) }.compact
-        return find_answer_by_id(fields.first.id) if answers_found.size == 1
+        return answers_found.first if answers_found.size == 1
         raise ArgumentError, "Cannot find single answer with field ID ##{id}"
       end
 

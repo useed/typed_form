@@ -41,7 +41,8 @@ def expected_question_attributes
    "Engineering, Student Organization", true,
    Time.at(1491091200).utc.to_date,
    4200, "Yes, I'm a returning USEED fundraiser.",
-   "https://useed.net/give/previous_campaign", "Program or Academic Unit",
+   "https://useed.net/give/previous_campaign",
+   "Testing Custom Response (Other)",
    "Engineering for the Common Good", "Yes", "advisor_example@example.com",
    "Example Advisor Name", 42,
    leaders, long_answer_1, long_answer_2]
